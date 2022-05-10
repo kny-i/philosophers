@@ -49,5 +49,7 @@ typedef struct s_data
 
 void	put_error(char *str);
 void	init_data(t_data *data, int argc, char **argv);
+void 	create_thread(t_data *data);
+void	join_thread(t_data *data);
 
 #endif
