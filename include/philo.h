@@ -48,5 +48,6 @@ typedef struct s_data
 }	t_data;
 
 void	put_error(char *str);
+void	init_data(t_data *data, int argc, char **argv);
 
 #endif
