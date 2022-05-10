@@ -1,52 +1,52 @@
 #ifndef PHILO_H
 # define PHILO_H
 
-# include <stdio.h>
-# include <sys/types.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <errno.h>
-# include <string.h>
-# include <pthread.h>
-# include <sys/time.h>
-# include <stdbool.h>
+# include "stdio.h"
+# include "unistd.h"
+# include "sys/time.h"
+# include "unistd.h"
+# include "stdlib.h"
+# include "stdbool.h"
+# include "pthread.h"
+# include "limits.h"
 
-typedef struct s_conf	t_conf;
+typedef struct s_data t_data;
 
 typedef struct s_philo
 {
-	size_t			id;
-	size_t			eat_count;
-	size_t			last_eat_ms;
-	bool			has_right_fork;
-	bool			has_left_fork;
-	pthread_t		thread;
-	t_conf			*conf;
+	bool	has_fork_right;
+	bool	has_fork_left;
+	size_t 	eat_count;
+	size_t	philo_number;
+	size_t	last_eat_time;
+
+	pthread_t	thread_philo;
+	t_data		*data;
 }	t_philo;
 
 typedef struct s_monitor
 {
-	size_t			id;
-	pthread_t		thread;
-	t_philo			*philo;
-	t_conf			*conf;
+	size_t	monitor_number;
+
+	pthread_t	thread_monitor;
+	t_data		*data;
+	t_philo		*philo;
 }	t_monitor;
 
-typedef struct s_conf
+typedef struct s_data
 {
-	size_t			num_philos;
-	size_t			die_ms;
-	size_t			eat_ms;
-	size_t			sleep_ms;
-	size_t			num_must_eat;
-	size_t			num_full_philos;
-	bool			finish_flag;
-	pthread_mutex_t	m_common;
-	t_monitor		**monitor;
-	t_philo			**philo;
-	pthread_mutex_t	**m_forks;
-}	t_conf;
+	int		argc;
+	char	**argv;
+	size_t	number_of_philo;
+	size_t	time_to_die;
+	size_t	time_to_eat;
+	size_t	time_to_sleep;
+	size_t	number_of_min_eat;
+
+	t_philo			**philos;
+	t_monitor		**monitors;
+	pthread_mutex_t	shared_mutex;
+	pthread_mutex_t	*forks_mutex;
+}	t_data;
 
 #endif
