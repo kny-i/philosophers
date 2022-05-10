@@ -49,4 +49,6 @@ typedef struct s_data
 	pthread_mutex_t	*forks_mutex;
 }	t_data;
 
+void	put_error(char *str);
+
 #endif
