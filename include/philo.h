@@ -35,8 +35,6 @@ typedef struct s_monitor
 
 typedef struct s_data
 {
-	int		argc;
-	char	**argv;
 	size_t	number_of_philo;
 	size_t	time_to_die;
 	size_t	time_to_eat;

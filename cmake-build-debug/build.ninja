@@ -72,8 +72,22 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_philo_with_Ohnuki: phony || CMakeFiles/philo_with_Ohnuki.dir
 
+build CMakeFiles/philo_with_Ohnuki.dir/src/free.c.o: C_COMPILER__philo_with_Ohnuki_Debug /Users/yukikondo/Desktop/philo_with_Ohnuki/src/free.c || cmake_object_order_depends_target_philo_with_Ohnuki
+  DEP_FILE = CMakeFiles/philo_with_Ohnuki.dir/src/free.c.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu11
+  INCLUDES = -I/Users/yukikondo/Desktop/philo_with_Ohnuki/include
+  OBJECT_DIR = CMakeFiles/philo_with_Ohnuki.dir
+  OBJECT_FILE_DIR = CMakeFiles/philo_with_Ohnuki.dir/src
+
 build CMakeFiles/philo_with_Ohnuki.dir/src/main.c.o: C_COMPILER__philo_with_Ohnuki_Debug /Users/yukikondo/Desktop/philo_with_Ohnuki/src/main.c || cmake_object_order_depends_target_philo_with_Ohnuki
   DEP_FILE = CMakeFiles/philo_with_Ohnuki.dir/src/main.c.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu11
+  INCLUDES = -I/Users/yukikondo/Desktop/philo_with_Ohnuki/include
+  OBJECT_DIR = CMakeFiles/philo_with_Ohnuki.dir
+  OBJECT_FILE_DIR = CMakeFiles/philo_with_Ohnuki.dir/src
+
+build CMakeFiles/philo_with_Ohnuki.dir/src/utils.c.o: C_COMPILER__philo_with_Ohnuki_Debug /Users/yukikondo/Desktop/philo_with_Ohnuki/src/utils.c || cmake_object_order_depends_target_philo_with_Ohnuki
+  DEP_FILE = CMakeFiles/philo_with_Ohnuki.dir/src/utils.c.o.d
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu11
   INCLUDES = -I/Users/yukikondo/Desktop/philo_with_Ohnuki/include
   OBJECT_DIR = CMakeFiles/philo_with_Ohnuki.dir
@@ -87,7 +101,7 @@ build CMakeFiles/philo_with_Ohnuki.dir/src/main.c.o: C_COMPILER__philo_with_Ohnu
 #############################################
 # Link the executable philo_with_Ohnuki
 
-build philo_with_Ohnuki: C_EXECUTABLE_LINKER__philo_with_Ohnuki_Debug CMakeFiles/philo_with_Ohnuki.dir/src/main.c.o
+build philo_with_Ohnuki: C_EXECUTABLE_LINKER__philo_with_Ohnuki_Debug CMakeFiles/philo_with_Ohnuki.dir/src/free.c.o CMakeFiles/philo_with_Ohnuki.dir/src/main.c.o CMakeFiles/philo_with_Ohnuki.dir/src/utils.c.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
   OBJECT_DIR = CMakeFiles/philo_with_Ohnuki.dir
   POST_BUILD = :
