@@ -49,5 +49,7 @@ void	put_error(char *str);
 void	init_data(t_data *data, int argc, char **argv);
 void 	create_thread(t_data *data);
 void	join_thread(t_data *data);
+size_t	get_time(t_data *data);
+void	print_action(t_philo *philo, char *message);
 
 #endif
