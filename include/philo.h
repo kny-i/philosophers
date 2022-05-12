@@ -19,10 +19,9 @@ typedef struct s_philo
 	size_t 	eat_count;
 	size_t	philo_number;
 	size_t	last_eat_time;
-
 	pthread_t	thread_philo;
 	t_data		*data;
-}	t_philo;
+}				t_philo;
 
 typedef struct s_monitor
 {
@@ -40,7 +39,6 @@ typedef struct s_data
 	size_t	time_to_eat;
 	size_t	time_to_sleep;
 	size_t	number_of_min_eat;
-
 	t_philo			**philos;
 	t_monitor		**monitors;
 	pthread_mutex_t	shared_mutex;
