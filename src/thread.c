@@ -1,8 +1,9 @@
 #include "../include/philo.h"
 
-void	*philo_test(void *str)
+
+void	*philo_mov(void *data)
 {
-	printf("[%s]\n", (char *)str);
+
 	return (NULL);
 }
 
@@ -13,7 +14,7 @@ void create_thread(t_data *data)
 	i = 0;
 	while (i < data->number_of_philo)
 	{
-		pthread_create(&(data->philos[i]->thread_philo), NULL, &philo_test, "ASB");
+		pthread_create(&(data->philos[i]->thread_philo), NULL, &philo_mov, data);
 		i++;
 	}
 }
