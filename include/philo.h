@@ -21,7 +21,7 @@ typedef struct s_philo
 	size_t	last_eat_time;
 	pthread_t	thread_philo;
 	t_data		*data;
-}				t_philo;
+}	t_philo;
 
 typedef struct s_monitor
 {
@@ -56,4 +56,5 @@ void	time_keeper(t_data *data, size_t time);
 void	philo_sleep(t_philo *philo);
 void	philo_think(t_philo *philo);
 void	philo_eat(t_philo *philo);
+void	*monitor_routine(void *ptr);
 #endif

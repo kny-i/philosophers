@@ -4,7 +4,7 @@ size_t	get_time(t_data *data)
 {
 	struct timeval	tv;
 	size_t			time;
-	int				ret;
+	int				ret;0
 
 	ret = gettimeofday(&tv, NULL);
 //	if (ret == -1)
