@@ -26,7 +26,7 @@ typedef struct s_philo
 typedef struct s_monitor
 {
 	size_t	monitor_number;
-
+	bool		is_reached_min_eat;
 	pthread_t	thread_monitor;
 	t_data		*data;
 	t_philo		*philo;
@@ -43,6 +43,7 @@ typedef struct s_data
 	t_monitor		**monitors;
 	pthread_mutex_t	shared_mutex;
 	pthread_mutex_t	*forks_mutex;
+	int		argc;
 }	t_data;
 
 void	put_error(char *str);

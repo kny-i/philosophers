@@ -30,6 +30,7 @@ static void	init_monitors(t_data *data)
 		data->monitors[i]->monitor_number = i + 1;
 		data->monitors[i]->data = data;
 		data->monitors[i]->philo = data->philos[i];
+		data->monitors[i]->is_reached_min_eat = 0;
 		i++;
 	}
 }
@@ -53,6 +54,7 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->time_to_die = atoi(argv[2]);
 	data->time_to_eat = atoi(argv[3]);
 	data->time_to_sleep = atoi(argv[4]);
+	data->argc = argc;
 	if (argc == 6)
 		data->number_of_min_eat = atoi(argv[5]);
 	else
