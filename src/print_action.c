@@ -16,5 +16,7 @@ size_t	get_time(t_data *data)
 
 void	print_action(t_philo *philo, char *message)
 {
+	pthread_mutex_lock(&philo->data->shared_mutex);
 	printf("%zu %zu %s\n", get_time(philo->data), philo->philo_number, message);
+	pthread_mutex_unlock(&philo->data->shared_mutex);
 }

@@ -1,5 +1,20 @@
 #include "../include/philo.h"
 
+void	time_keeper(t_data *data, size_t time)
+{
+	size_t	start_time;
+	size_t	passed_time;
+
+	start_time = get_time(data);
+	while (1)
+	{
+		passed_time = get_time(data);
+		if (passed_time - start_time >= time)
+			return ;
+		usleep(100);
+	}
+}
+
 void	*philo_mov(void *philo)
 {
 	while(1)
