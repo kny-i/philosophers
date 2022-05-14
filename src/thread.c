@@ -1,11 +1,11 @@
 #include "../include/philo.h"
 
-void	*philo_mov(void *data)
+void	*philo_mov(void *philo)
 {
 	while(1)
 	{
-		pickup_fork(data);
-		philo_eat(data);
+		pickup_fork(philo);
+		philo_eat(philo);
 		philo_sleep(data);
 		philo_think(data);
 	}
