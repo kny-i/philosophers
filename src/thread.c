@@ -21,8 +21,8 @@ void	*philo_mov(void *philo)
 	{
 		pickup_fork(philo);
 		philo_eat(philo);
-		philo_sleep(data);
-		philo_think(data);
+		philo_sleep(philo);
+		philo_think(philo);
 	}
 	return (NULL);
 }
