@@ -12,6 +12,7 @@ void	philo_eat(t_philo *philo)
 			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number]));
 			philo->has_fork_left = 0;
 			philo->has_fork_right = 0;
+			philo->eat_count++;
 		}
 		else
 		{
@@ -19,6 +20,7 @@ void	philo_eat(t_philo *philo)
 			pthread_mutex_unlock(&(philo->data->forks_mutex[0]));
 			philo->has_fork_left = 0;
 			philo->has_fork_right = 0;
+			philo->eat_count++;
 		}
 	}
 }

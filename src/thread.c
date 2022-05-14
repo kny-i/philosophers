@@ -15,8 +15,14 @@ void	time_keeper(t_data *data, size_t time)
 	}
 }
 
-void	*philo_mov(void *philo)
+void	*philo_mov(void *ptr)
 {
+
+	t_philo *philo;
+
+	philo = (t_philo *)ptr;
+	if (philo->philo_number % 2 == 0)
+		time_keeper(philo->data, 200);
 	while(1)
 	{
 		pickup_fork(philo);
