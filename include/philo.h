@@ -58,4 +58,5 @@ void	philo_sleep(t_philo *philo);
 void	philo_think(t_philo *philo);
 void	philo_eat(t_philo *philo);
 void	*monitor_routine(void *ptr);
+void	terminate_program(t_data *data);
 #endif

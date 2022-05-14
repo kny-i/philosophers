@@ -13,7 +13,7 @@ void	*monitor_routine(void *ptr)
 		if (get_time(monitor->data) - monitor->philo->last_eat_time  > monitor->data->time_to_die )
 		{
 			print_action(monitor->philo, "is die");
-			exit(1);
+			terminate_program(monitor->data);
 		}
 		if (monitor->philo->eat_count >= monitor->data->number_of_min_eat)
 			monitor->is_reached_min_eat = 1;
@@ -24,7 +24,7 @@ void	*monitor_routine(void *ptr)
 			i++;
 			if (i == monitor->data->number_of_philo)
 			{
-				exit(1);
+				terminate_program(monitor->data);
 			}	
 		}
 
