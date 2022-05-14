@@ -51,5 +51,5 @@ void 	create_thread(t_data *data);
 void	join_thread(t_data *data);
 size_t	get_time(t_data *data);
 void	print_action(t_philo *philo, char *message);
-
+void	pickup_fork(t_philo *philos);
 #endif
