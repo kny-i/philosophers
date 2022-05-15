@@ -16,7 +16,7 @@ int	print_action(t_philo *philo, char *message)
 	if (philo->data->is_finished == 1)
 		return (1);
 	pthread_mutex_lock(&philo->data->shared_mutex);
-	printf("%zu %zu %s\n", get_time(philo->data), philo->philo_number, message);
+	printf("%8zu %zu %s\n", get_time(philo->data), philo->philo_number, message);
 	pthread_mutex_unlock(&philo->data->shared_mutex);
 	return (0);
 }

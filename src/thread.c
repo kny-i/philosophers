@@ -23,7 +23,7 @@ void	*philo_routine(void *ptr)
 	philo = (t_philo *)ptr;
 	if (philo->philo_number % 2 == 0)
 		time_keeper(philo->data, 200);
-	while(1)
+	while(philo->data->is_finished != 1)
 	{
 		if (pickup_fork(philo) == 1 || philo_eat(philo) == 1 || \
 		philo_sleep(philo) == 1 || philo_think(philo) == 1)
