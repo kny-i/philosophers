@@ -12,7 +12,8 @@ void	terminate_program(t_data *data)
 
 	i = 0;
 	pthread_mutex_destroy(&(data->shared_mutex));
-	while(i < data->number_of_philo)
+	data->is_finished = 1;
+/*	while(i < data->number_of_philo)
 	{
 		pthread_mutex_destroy(&(data->forks_mutex[i]));
 		if (data->philos[i] != NULL)
@@ -24,7 +25,7 @@ void	terminate_program(t_data *data)
 	if (data->philos != NULL)
 		free(data->philos);
 	if (data->monitors != NULL)
-		free(data->monitors);
+		free(data->monitors);*/
 }
 
 int	main(int argc, char **argv)

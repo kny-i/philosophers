@@ -25,10 +25,20 @@ void	*philo_routine(void *ptr)
 		time_keeper(philo->data, 200);
 	while(1)
 	{
+		if (philo->data->is_finished == 1)
+			break;
 		pickup_fork(philo);
+		if (philo->data->is_finished == 1)
+			break;
 		philo_eat(philo);
+		if (philo->data->is_finished == 1)
+			break;
 		philo_sleep(philo);
+		if (philo->data->is_finished == 1)
+			break;
 		philo_think(philo);
+		if (philo->data->is_finished == 1)
+			break;
 	}
 	return (NULL);
 }

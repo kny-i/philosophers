@@ -39,6 +39,7 @@ typedef struct s_data
 	size_t	time_to_eat;
 	size_t	time_to_sleep;
 	size_t	number_of_min_eat;
+	bool	is_finished;
 	t_philo			**philos;
 	t_monitor		**monitors;
 	pthread_mutex_t	shared_mutex;

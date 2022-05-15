@@ -55,6 +55,7 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->time_to_eat = atoi(argv[3]);
 	data->time_to_sleep = atoi(argv[4]);
 	data->argc = argc;
+	data->is_finished = 0;
 	if (argc == 6)
 		data->number_of_min_eat = atoi(argv[5]);
 	else
