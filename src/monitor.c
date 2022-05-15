@@ -7,13 +7,12 @@ void	*monitor_routine(void *ptr)
 
 	monitor = (t_monitor *)ptr;
 	i = 0;
-	time_keeper(monitor->data, monitor->data->time_to_die);
 	while (monitor->data->is_finished != 1)
 	{
-//		time_keeper(monitor->data, 100);
+		time_keeper(monitor->data, 1000);
 		if (get_time(monitor->data) - monitor->philo->last_eat_time  > monitor->data->time_to_die )
 		{
-			print_action(monitor->philo, "died");
+			print_action(monitor->philo, "is die");
 			terminate_program(monitor->data);
 		}
 		if (monitor->philo->eat_count >= monitor->data->number_of_min_eat)
