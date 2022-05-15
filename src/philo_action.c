@@ -6,7 +6,8 @@ int 	philo_eat(t_philo *philo)
 		return (1);
 	if (philo->has_fork_right == 1 && philo->has_fork_left == 1)
 	{
-		print_action(philo, "is eating");
+		if (print_action(philo, "is eating") == 1)
+			return (1);
 		philo->last_eat_time = get_time(philo->data);
 		time_keeper(philo->data, philo->data->time_to_eat);
 		if (philo->philo_number != philo->data->number_of_philo)
@@ -33,7 +34,8 @@ int 	philo_sleep(t_philo *philo)
 {
 	if (philo->data->is_finished == 1)
 		return (1);
-	print_action(philo, "is sleeping");
+	if (print_action(philo, "is sleeping") == 1)
+		return (1);
 	time_keeper(philo->data, philo->data->time_to_sleep);
 	return (0);
 }
@@ -41,6 +43,7 @@ int 	philo_think(t_philo *philo)
 {
 	if (philo->data->is_finished == 1)
 		return (1);
-	print_action(philo,"is thinking");
+	if (print_action(philo,"is thinking") == 1)
+		return (1);
 	return (0);
 }

@@ -11,7 +11,7 @@ void	terminate_program(t_data *data)
 	int i;
 
 	i = 0;
-	pthread_mutex_destroy(&(data->shared_mutex));
+//	pthread_mutex_destroy(&(data->shared_mutex));
 	data->is_finished = 1;
 /*	while(i < data->number_of_philo)
 	{
