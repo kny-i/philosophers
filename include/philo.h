@@ -45,6 +45,7 @@ typedef struct s_data
 	pthread_mutex_t	shared_mutex;
 	pthread_mutex_t	*forks_mutex;
 	int		argc;
+	size_t	start_time;
 }	t_data;
 
 void	put_error(char *str);

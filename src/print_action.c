@@ -10,7 +10,7 @@ size_t	get_time(t_data *data)
 //	if (ret == -1)
 //		free_all_elem(data);
 	// printf("tv_sec = %ld tv_usec = %06d\n", tv.tv_sec, tv.tv_usec);
-	time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000) - data->start_time;
 	return (time);
 }
 
