@@ -7,6 +7,5 @@ include_directories(include)
 
 add_executable(philo_with_Ohnuki
         include/philo.h
-        src/free.c
         src/main.c
         src/utils.c)

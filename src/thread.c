@@ -33,9 +33,9 @@ void	*philo_routine(void *ptr)
 	return (NULL);
 }
 
-void create_thread(t_data *data)
+void	create_thread(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->number_of_philo)
@@ -54,6 +54,7 @@ void	join_thread(t_data *data)
 	while (i < data->number_of_philo)
 	{
 		pthread_join(data->philos[i]->thread_philo, NULL);
+		pthread_join(data->monitors[i]->thread_monitor, NULL);
 		i++;
 	}
 }

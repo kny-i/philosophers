@@ -1,20 +1,30 @@
 #include "../include/philo.h"
 
+//__attribute__((destructor))
+//static void destructor() {
+//	system("leaks -q philo");
+//}
+
+
 void	terminate_program(t_data *data)
 {
 	int i;
 
 	i = 0;
+	pthread_mutex_destroy(&(data->shared_mutex));
 	while(i < data->number_of_philo)
 	{
 		pthread_mutex_destroy(&(data->forks_mutex[i]));
-		free(data->philos[i]);
-		free(data->monitors[i]);
+		if (data->philos[i] != NULL)
+			free(data->philos[i]);
+		if (data->monitors[i] != NULL)
+			free(data->monitors[i]);
+		i++;
 	}
-	free(data->philos);
-	free(data->monitors);
-	pthread_mutex_destroy(&(data->shared_mutex));
-	free(data);
+	if (data->philos != NULL)
+		free(data->philos);
+	if (data->monitors != NULL)
+		free(data->monitors);
 }
 
 int	main(int argc, char **argv)

@@ -23,11 +23,8 @@ void	*monitor_routine(void *ptr)
 				break ;
 			i++;
 			if (i == monitor->data->number_of_philo)
-			{
 				terminate_program(monitor->data);
-			}	
 		}
-
 	}
 	return (NULL);
 }
