@@ -53,11 +53,11 @@ void 	create_thread(t_data *data);
 void	join_thread(t_data *data);
 size_t	get_time(t_data *data);
 void	print_action(t_philo *philo, char *message);
-void	pickup_fork(t_philo *philo);
+int		pickup_fork(t_philo *philo);
 void	time_keeper(t_data *data, size_t time);
-void	philo_sleep(t_philo *philo);
-void	philo_think(t_philo *philo);
-void	philo_eat(t_philo *philo);
+int 	philo_sleep(t_philo *philo);
+int 	philo_think(t_philo *philo);
+int 	philo_eat(t_philo *philo);
 void	*monitor_routine(void *ptr);
 void	terminate_program(t_data *data);
 #endif

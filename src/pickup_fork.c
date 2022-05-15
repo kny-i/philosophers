@@ -1,7 +1,9 @@
 #include "../include/philo.h"
 
-void	pickup_fork(t_philo *philo)
+int	pickup_fork(t_philo *philo)
 {
+	if (philo->data->is_finished == 1)
+		return (1);
 	if (philo->has_fork_right == 0)
 	{
 		pthread_mutex_lock(&(philo->data->forks_mutex[philo->philo_number - 1]));
@@ -23,5 +25,5 @@ void	pickup_fork(t_philo *philo)
 			print_action(philo, "has taken a fork");
 		}
 	}
-
+	return (0);
 }

@@ -25,20 +25,9 @@ void	*philo_routine(void *ptr)
 		time_keeper(philo->data, 200);
 	while(1)
 	{
-		if (philo->data->is_finished == 1)
-			break;
-		pickup_fork(philo);
-		if (philo->data->is_finished == 1)
-			break;
-		philo_eat(philo);
-		if (philo->data->is_finished == 1)
-			break;
-		philo_sleep(philo);
-		if (philo->data->is_finished == 1)
-			break;
-		philo_think(philo);
-		if (philo->data->is_finished == 1)
-			break;
+		if (pickup_fork(philo) == 1 || philo_eat(philo) == 1 || \
+		philo_sleep(philo) == 1 || philo_think(philo) == 1)
+			break ;
 	}
 	return (NULL);
 }

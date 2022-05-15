@@ -1,7 +1,9 @@
 #include "../include/philo.h"
 
-void	philo_eat(t_philo *philo)
+int 	philo_eat(t_philo *philo)
 {
+	if (philo->data->is_finished == 1)
+		return (1);
 	if (philo->has_fork_right == 1 && philo->has_fork_left == 1)
 	{
 		print_action(philo, "is eating");
@@ -24,14 +26,21 @@ void	philo_eat(t_philo *philo)
 			philo->eat_count++;
 		}
 	}
+	return (0);
 }
 
-void	philo_sleep(t_philo *philo)
+int 	philo_sleep(t_philo *philo)
 {
+	if (philo->data->is_finished == 1)
+		return (1);
 	print_action(philo, "is sleeping");
 	time_keeper(philo->data, philo->data->time_to_sleep);
+	return (0);
 }
-void	philo_think(t_philo *philo)
+int 	philo_think(t_philo *philo)
 {
+	if (philo->data->is_finished == 1)
+		return (1);
 	print_action(philo,"is thinking");
+	return (0);
 }
