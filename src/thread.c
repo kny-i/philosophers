@@ -1,6 +1,6 @@
 #include "../include/philo.h"
 
-void	time_keeper(t_data *data, size_t time)
+int	time_keeper(t_data *data, size_t time)
 {
 	size_t	start_time;
 	size_t	passed_time;
@@ -10,9 +10,12 @@ void	time_keeper(t_data *data, size_t time)
 	{
 		passed_time = get_time(data);
 		if (passed_time - start_time >= time)
-			return ;
+			return (0) ;
+		if (data->is_finished == 1)
+			return (1);
 		usleep(100);
 	}
+	return (0);
 }
 
 void	*philo_routine(void *ptr)
@@ -21,8 +24,8 @@ void	*philo_routine(void *ptr)
 	t_philo *philo;
 
 	philo = (t_philo *)ptr;
-	if (philo->philo_number % 2 == 0)
-		time_keeper(philo->data, 200);
+	if (philo->philo_number % 2 != 0)
+		usleep(200);
 	while(philo->data->is_finished != 1)
 	{
 		if (pickup_fork(philo) == 1 || philo_eat(philo) == 1 || \

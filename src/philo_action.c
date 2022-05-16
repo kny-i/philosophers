@@ -9,7 +9,8 @@ int 	philo_eat(t_philo *philo)
 		if (print_action(philo, "is eating") == 1)
 			return (1);
 		philo->last_eat_time = get_time(philo->data);
-		time_keeper(philo->data, philo->data->time_to_eat);
+		if (time_keeper(philo->data, philo->data->time_to_eat) == 1)
+			return (1);
 		if (philo->philo_number != philo->data->number_of_philo)
 		{
 			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number - 1]));
@@ -36,7 +37,8 @@ int 	philo_sleep(t_philo *philo)
 		return (1);
 	if (print_action(philo, "is sleeping") == 1)
 		return (1);
-	time_keeper(philo->data, philo->data->time_to_sleep);
+	if (time_keeper(philo->data, philo->data->time_to_sleep) == 1)
+		return (1);
 	return (0);
 }
 int 	philo_think(t_philo *philo)
