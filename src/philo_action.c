@@ -8,8 +8,8 @@ int 	philo_eat(t_philo *philo)
 	{
 		if (print_action(philo, "is eating") == 1)
 			return (1);
-		philo->last_eat_time = get_time(philo->data);
-		if (time_keeper(philo->data, philo->data->time_to_eat) == 1)
+		philo->last_eat_time = get_time_philo(philo);
+		if (time_keeper_philo(philo, philo->data->time_to_eat) == 1)
 			return (1);
 		if (philo->philo_number != philo->data->number_of_philo)
 		{
@@ -37,7 +37,7 @@ int 	philo_sleep(t_philo *philo)
 		return (1);
 	if (print_action(philo, "is sleeping") == 1)
 		return (1);
-	if (time_keeper(philo->data, philo->data->time_to_sleep) == 1)
+	if (time_keeper_philo(philo, philo->data->time_to_sleep) == 1)
 		return (1);
 	return (0);
 }

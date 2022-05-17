@@ -21,6 +21,7 @@ typedef struct s_philo
 	size_t	last_eat_time;
 	pthread_t	thread_philo;
 	t_data		*data;
+	size_t	start_time;
 }	t_philo;
 
 typedef struct s_monitor
@@ -45,7 +46,6 @@ typedef struct s_data
 	pthread_mutex_t	shared_mutex;
 	pthread_mutex_t	*forks_mutex;
 	int		argc;
-	size_t	start_time;
 }	t_data;
 
 void	put_error(char *str);
@@ -61,4 +61,6 @@ int 	philo_think(t_philo *philo);
 int 	philo_eat(t_philo *philo);
 void	*monitor_routine(void *ptr);
 void	terminate_program(t_data *data);
+size_t	get_time_philo(t_philo *philo);
+int		time_keeper_philo(t_philo *philo, size_t time);
 #endif
