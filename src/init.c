@@ -50,18 +50,12 @@ static void	init_forks(t_data *data)
 
 void	init_data(t_data *data, int argc, char **argv)
 {
-	struct timeval	tv;
-	size_t			time;
-	int				ret;
-
 	data->number_of_philo = atoi(argv[1]);
 	data->time_to_die = atoi(argv[2]);
 	data->time_to_eat = atoi(argv[3]);
 	data->time_to_sleep = atoi(argv[4]);
 	data->argc = argc;
 	data->is_finished = 0;
-	ret = gettimeofday(&tv, NULL);
-	data->start_time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	if (argc == 6)
 		data->number_of_min_eat = atoi(argv[5]);
 	else

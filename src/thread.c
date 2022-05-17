@@ -1,17 +1,17 @@
 #include "../include/philo.h"
 
-int	time_keeper(t_data *data, size_t time)
+int	time_keeper_philo(t_philo *philo, size_t time)
 {
 	size_t	start_time;
 	size_t	passed_time;
 
-	start_time = get_time(data);
+	start_time = get_time_philo(philo);
 	while (1)
 	{
-		passed_time = get_time(data);
+		passed_time = get_time_philo(philo);
 		if (passed_time - start_time >= time)
 			return (0) ;
-		if (data->is_finished == 1)
+		if (philo->data->is_finished == 1)
 			return (1);
 		usleep(100);
 	}
@@ -22,10 +22,16 @@ void	*philo_routine(void *ptr)
 {
 
 	t_philo *philo;
+	struct timeval	tv;
+	size_t			time;
+	int				ret;
 
 	philo = (t_philo *)ptr;
+	ret = gettimeofday(&tv, NULL);
+	philo->start_time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	if (philo->philo_number % 2 != 0)
 		usleep(200);
+
 	while(philo->data->is_finished != 1)
 	{
 		if (pickup_fork(philo) == 1 || philo_eat(philo) == 1 || \
