@@ -1,5 +1,4 @@
 #include "../include/philo.h"
-
 int	pickup_fork(t_philo *philo)
 {
 	if (philo->data->is_finished == 1)
