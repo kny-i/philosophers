@@ -1,22 +1,4 @@
 #include "../include/philo.h"
-/*
-int	time_keeper(t_data *data, size_t time)
-{
-	size_t	start_time;
-	size_t	passed_time;
-
-	start_time = get_time(data);
-	while (1)
-	{
-		passed_time = get_time(data);
-		if (passed_time - start_time >= time)
-			return (0) ;
-		if (data->is_finished == 1)
-			return (1);
-		usleep(100);
-	}
-	return (0);
-}*/
 
 int	time_keeper_philo(t_philo *philo, size_t time)
 {
