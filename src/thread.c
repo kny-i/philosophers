@@ -29,9 +29,6 @@ void	*philo_routine(void *ptr)
 	philo = (t_philo *)ptr;
 	ret = gettimeofday(&tv, NULL);
 	philo->start_time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
-	if (philo->philo_number % 2 != 0)
-		usleep(200);
-
 	while(philo->data->is_finished != 1)
 	{
 		if (pickup_fork(philo) == 1 || philo_eat(philo) == 1 || \
