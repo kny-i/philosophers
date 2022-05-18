@@ -35,7 +35,7 @@ void	*philo_routine(void *ptr)
 	while(philo->data->is_finished != 1)
 	{
 		if (pickup_fork(philo) == 1 || philo_eat(philo) == 1 || \
-		philo_sleep(philo) == 1 || philo_think(philo) == 1)
+		philo_sleep(philo) == 1 || philo_think(philo) == 1 || philo->data->is_finished == 1)
 			break ;
 	}
 	return (NULL);
