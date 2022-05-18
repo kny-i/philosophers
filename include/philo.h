@@ -55,6 +55,7 @@ void	join_thread(t_data *data);
 size_t	get_time(t_data *data);
 int 	print_action(t_philo *philo, char *message);
 int		pickup_fork(t_philo *philo);
+void	putdown_fork(t_philo *philo);
 int 	time_keeper(t_data *data, size_t time);
 int 	philo_sleep(t_philo *philo);
 int 	philo_think(t_philo *philo);

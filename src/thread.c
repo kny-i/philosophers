@@ -38,7 +38,10 @@ void	*philo_routine(void *ptr)
 		philo_sleep(philo) == 1 || philo_think(philo) == 1 || philo->data->is_finished == 1)
 			break ;
 	}
-	return (NULL);
+	//fork離す関数必要。
+	putdown_fork(philo);
+//	printf("\x1b[36m[%s philo_num = %zu]\n\033[m", "routine fin", philo->philo_number);
+	return (NULL);;
 }
 
 void	create_thread(t_data *data)

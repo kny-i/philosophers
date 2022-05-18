@@ -14,9 +14,10 @@ void	terminate_program(t_data *data)
 //	pthread_mutex_destroy(&(data->shared_mutex));
 	pthread_mutex_lock(&data->shared_mutex);
 	data->is_finished = 1;
+	pthread_mutex_unlock(&(data->shared_mutex));
 	while (i < data->number_of_philo)
 	{
-		pthread_mutex_unlock(&(data->shared_mutex));
+		pthread_mutex_destroy(&data->forks_mutex[i]);
 		i++;
 	}
 	pthread_mutex_unlock(&(data->shared_mutex));
