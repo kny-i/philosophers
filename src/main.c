@@ -16,6 +16,7 @@ void	terminate_program(t_data *data)
 	pthread_mutex_unlock(&(data->shared_mutex));
 	while (i < data->number_of_philo)
 	{
+		pthread_mutex_unlock(&data->forks_mutex[i]);
 		pthread_mutex_destroy(&data->forks_mutex[i]);
 		i++;
 	}
