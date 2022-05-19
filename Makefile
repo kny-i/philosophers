@@ -4,7 +4,7 @@ SRCS = $(shell find "./src/" -name "*.c")
 OBJS = ${SRCS:.c=.o}
 FLAG = -fsanitize=thread
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -pthread
 
 RM = rm -rf
 
