@@ -36,7 +36,7 @@ void	*philo_routine(void *ptr)
 			break ;
 	}
 	//fork離す関数必要。
-	putdown_fork(philo);
+	put_down_fork(philo);
 //	printf("\x1b[36m[%s philo_num = %zu]\n\033[m", "routine fin", philo->philo_number);
 	return (NULL);;
 }

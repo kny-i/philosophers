@@ -40,10 +40,47 @@ int	main(int argc, char **argv)
 {
 	t_data data;
 
-	if (argc != 5 && argc != 6)
-		put_error("invalid arguments");
-	init_data(&data, argc, argv);
+	memset(&data, 0, sizeof(t_data));
+	if ((argc != 5 && argc != 6) || ft_isnum(argc - 1, argv) == false)
+	{
+		printf(RED"Invalid input!\n");
+		print_help();
+		return (0);
+	}
+	if(check(argc, argv) == false || init_data(&data, argc, argv) == false)
+		return (0);
 	create_thread(&data);
 	join_thread(&data);
 }
 
+/*
+memsetの追加。
+
+mallocのエラー処理を足した。
+
+atoiをft_atoiに変更。
+
+put_errorをprintfに変更し関連を削除。
+
+見やすくするために色付け。
+
+200人以上philoのエラー処理の追加。
+
+整合性を高めるために、voidからboolに変更。
+
+make時にphiloの絵が出るようにした。(makeするたびechoされるのでこれは審議)
+
+.hのインデント周りの修正。
+
+atoiの0~INT_MAX以外を弾くようにした。
+
+usageを追加。
+
+atoiの文字が入ってきた場合のエラー処理を追加。(001などは弾く必要ないと思ってるので追加していない)
+
+ヘッダーファイルを見やすくした。
+
+アンダーバーの追加　（putdownなど)。
+
+actionごとに色付けした。
+*/

@@ -1,6 +1,6 @@
 #include "../include/philo.h"
 
-void	putdown_fork(t_philo *philo)
+void	put_down_fork(t_philo *philo)
 {
 	if (philo->has_fork_left == true)
 	{
