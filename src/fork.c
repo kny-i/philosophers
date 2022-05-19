@@ -27,8 +27,10 @@ int	pickup_fork(t_philo *philo)
 		return (1);
 	if (philo->has_fork_right == 0)
 	{
+		pthread_mutex_lock(&philo->data->shared_mutex);
 		pthread_mutex_lock(&(philo->data->forks_mutex[philo->philo_number - 1]));
 		philo->has_fork_right = 1;
+		pthread_mutex_unlock(&philo->data->shared_mutex);
 		if (print_action(philo, "has taken a fork") == 1)
 			return (1);
 	}
@@ -36,15 +38,19 @@ int	pickup_fork(t_philo *philo)
 	{
 		if (philo->philo_number != philo->data->number_of_philo)
 		{
+			pthread_mutex_lock(&philo->data->shared_mutex);
 			pthread_mutex_lock(&(philo->data->forks_mutex[philo->philo_number]));
 			philo->has_fork_left = 1;
+			pthread_mutex_unlock(&philo->data->shared_mutex);
 			if (print_action(philo, "has taken a fork") == 1)
 				return (1);
 		}
 		else if (philo->data->number_of_philo != 1)
 		{
+			pthread_mutex_lock(&philo->data->shared_mutex);
 			pthread_mutex_lock(&(philo->data->forks_mutex[0]));
 			philo->has_fork_left = 1;
+			pthread_mutex_unlock(&philo->data->shared_mutex);
 			if (print_action(philo, "has taken a fork") == 1)
 				return (1);
 		}

@@ -28,7 +28,9 @@ void	*philo_routine(void *ptr)
 
 	philo = (t_philo *)ptr;
 	ret = gettimeofday(&tv, NULL);
+	pthread_mutex_lock(&philo->data->shared_mutex);
 	philo->start_time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	pthread_mutex_unlock(&philo->data->shared_mutex);
 	while(philo->data->is_finished != 1)
 	{
 		if (pickup_fork(philo) == 1 || philo_eat(philo) == 1 || \
