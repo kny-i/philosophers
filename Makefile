@@ -8,9 +8,6 @@ FLAGS = -Wall -Wextra -Werror -pthread
 
 RM = rm -rf
 
-R = "\033[31m"
-X = "\033[0m"
-
 all: ${NAME}
 
 ${NAME}: ${OBJS}
