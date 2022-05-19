@@ -34,7 +34,6 @@ void destroy_and_free(t_data *data)
 	pthread_mutex_unlock(&(data->shared_mutex));
 	while (i < data->number_of_philo)
 	{
-		put_down_fork(data->philos[i]);
 		pthread_mutex_destroy(&data->forks_mutex[i]);
 		i++;
 	}
