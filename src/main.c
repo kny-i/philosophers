@@ -8,20 +8,9 @@
 
 void	terminate_program(t_data *data)
 {
-	int i;
-
-	i = 0;
 	pthread_mutex_lock(&data->shared_mutex);
 	data->is_finished = 1;
 	pthread_mutex_unlock(&(data->shared_mutex));
-	while (i < data->number_of_philo)
-	{
-		put_down_fork(data->philos[i]);
-		pthread_mutex_destroy(&data->forks_mutex[i]);
-		i++;
-	}
-	pthread_mutex_unlock(&(data->shared_mutex));
-	pthread_mutex_destroy(&data->shared_mutex);
 /*	while(i < data->number_of_philo)
 	{
 		pthread_mutex_destroy(&(data->forks_mutex[i]));
@@ -35,6 +24,23 @@ void	terminate_program(t_data *data)
 		free(data->philos);
 	if (data->monitors != NULL)
 		free(data->monitors);*/
+}
+
+void destroy_and_free(t_data *data)
+{
+	int i;
+
+	i = 0;
+	pthread_mutex_unlock(&(data->shared_mutex));
+	while (i < data->number_of_philo)
+	{
+		put_down_fork(data->philos[i]);
+		pthread_mutex_destroy(&data->forks_mutex[i]);
+		i++;
+	}
+	pthread_mutex_unlock(&(data->shared_mutex));
+	pthread_mutex_destroy(&data->shared_mutex);
+
 }
 
 int	main(int argc, char **argv)
@@ -52,6 +58,8 @@ int	main(int argc, char **argv)
 		return (0);
 	create_thread(&data);
 	join_thread(&data);
+	destroy_and_free(&data);
+
 }
 
 /*
