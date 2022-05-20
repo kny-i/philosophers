@@ -20,9 +20,7 @@ void destroy_and_free(t_data *data)
 		i++;
 	}
 	i = 0;
-	pthread_mutex_unlock(&(data->shared_mutex));
-	pthread_mutex_destroy(&data->shared_mutex);
-/*	while(i < data->number_of_philo)
+	while(i < data->number_of_philo)
 	{
 		if (data->philos[i] != NULL)
 			free(data->philos[i]);
@@ -33,7 +31,9 @@ void destroy_and_free(t_data *data)
 	if (data->philos != NULL)
 		free(data->philos);
 	if (data->monitors != NULL)
-		free(data->monitors);*/
+		free(data->monitors);
+	pthread_mutex_unlock(&(data->shared_mutex));
+	pthread_mutex_destroy(&data->shared_mutex);
 }
 
 int	main(int argc, char **argv)
