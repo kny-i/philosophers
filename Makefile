@@ -2,7 +2,7 @@ NAME = philo
 
 SRCS = $(shell find "./src/" -name "*.c")
 OBJS = ${SRCS:.c=.o}
-FLAG = -fsanitize=thread -g
+#FLAG = -fsanitize=thread -g
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -pthread
 
@@ -12,6 +12,7 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	${CC} ${FLAGS} ${OBJS} $(FLAG) -o ${NAME}
+	#${CC} ${FLAGS} ${OBJS} $(FLAG) -o ${NAME}
 
 clean:
 	${RM} ${OBJS}

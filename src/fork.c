@@ -27,6 +27,7 @@ int	pickup_fork(t_philo *philo)
 		return (1);
 	if (philo->has_fork_right == 0)
 	{
+//		printf("philo_num %zu\n", philo->philo_number - 1);
 		pthread_mutex_lock(&(philo->data->forks_mutex[philo->philo_number - 1]));
 		philo->has_fork_right = 1;
 		if (print_action(philo, "has taken a fork") == 1)

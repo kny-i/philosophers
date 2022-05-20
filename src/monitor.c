@@ -19,7 +19,7 @@ void	*monitor_routine(void *ptr)
 			monitor->is_reached_min_eat = 1;
 		while(i < monitor->data->number_of_philo && monitor->data->argc == 6)
 		{
-			if (monitor->data->monitors[i]->is_reached_min_eat == 0)
+			if (monitor->data->monitors[i].is_reached_min_eat == 0)
 				break ;
 			i++;
 			if (i == monitor->data->number_of_philo)

@@ -1,6 +1,5 @@
 #include "../include/philo.h"
 
-
 void	terminate_program(t_data *data)
 {
 	pthread_mutex_lock(&data->shared_mutex);
@@ -19,19 +18,6 @@ void destroy_and_free(t_data *data)
 		pthread_mutex_destroy(&data->forks_mutex[i]);
 		i++;
 	}
-	i = 0;
-	while(i < data->number_of_philo)
-	{
-		if (data->philos[i] != NULL)
-			free(data->philos[i]);
-		if (data->monitors[i] != NULL)
-			free(data->monitors[i]);
-		i++;
-	}
-	if (data->philos != NULL)
-		free(data->philos);
-	if (data->monitors != NULL)
-		free(data->monitors);
 	pthread_mutex_unlock(&(data->shared_mutex));
 	pthread_mutex_destroy(&data->shared_mutex);
 }

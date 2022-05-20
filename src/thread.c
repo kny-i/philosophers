@@ -27,6 +27,8 @@ void	*philo_routine(void *ptr)
 	int				ret;
 
 	philo = (t_philo *)ptr;
+	if ((philo->philo_number + 1) % 2 == 1)
+		usleep(200);
 	ret = gettimeofday(&tv, NULL);
 	philo->start_time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	while(philo->data->is_finished != 1)
@@ -48,8 +50,8 @@ void	create_thread(t_data *data)
 	i = 0;
 	while (i < data->number_of_philo)
 	{
-		pthread_create(&(data->philos[i]->thread_philo), NULL, &philo_routine, data->philos[i]);
-		pthread_create(&(data->monitors[i])->thread_monitor, NULL, &monitor_routine, data->monitors[i]);
+		pthread_create(&(data->philos[i].thread_philo), NULL, &philo_routine, &data->philos[i]);
+		pthread_create(&(data->monitors[i]).thread_monitor, NULL, &monitor_routine, &data->monitors[i]);
 		i++;
 	}
 }
@@ -61,8 +63,8 @@ void	join_thread(t_data *data)
 	i = 0;
 	while (i < data->number_of_philo)
 	{
-		pthread_join(data->philos[i]->thread_philo, NULL);
-		pthread_join(data->monitors[i]->thread_monitor, NULL);
+		pthread_join(data->philos[i].thread_philo, NULL);
+		pthread_join(data->monitors[i].thread_monitor, NULL);
 		i++;
 	}
 }
