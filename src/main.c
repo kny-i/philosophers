@@ -41,13 +41,13 @@ int	main(int argc, char **argv)
 	t_data data;
 
 	memset(&data, 0, sizeof(t_data));
-	if ((argc != 5 && argc != 6) || ft_isnum(argc - 1, argv) == false)
+	if ((argc != 5 && argc != 6) || ft_isnum(argc - 1, argv) == false || digit_check(argc, argv) == false)
 	{
 		printf(RED"Invalid input!\n");
 		print_help();
 		return (0);
 	}
-	if(check(argc, argv) == false || init_data(&data, argc, argv) == false)
+	if(init_data(&data, argc, argv) == false)
 		return (0);
 	create_thread(&data);
 	join_thread(&data);

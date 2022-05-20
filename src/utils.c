@@ -1,6 +1,6 @@
 #include "../include/philo.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t i;
 
@@ -10,43 +10,43 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+int	ft_isdigit(int c)
 {
-	long int	res;
-	int			num;
-
-	res = 0;
-	num = 1;
-	while (('\t' <= *str && *str <= '\r') || (*str == ' '))
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			num *= -1;
-		str++;
-	}
-	while ('0' <= *str && *str <= '9')
-	{
-		res = res * 10 + *str - '0';
-		str++;
-		if (res > (long int)INT_MIN * -1 && num == -1)
-			return (0);
-		if (res > INT_MAX && num == 1)
-			return (-1);
-	}
-	return ((int)res * num);
+	return ('0' <= c && c <= '9');
 }
 
-bool	check(int argc, char **argv)
+long long	ft_atoll(const char *str)
+{
+	int			neg;
+	size_t		i;
+	long long	num;
+
+	i = 0;
+	neg = 1;
+	num = 0;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
+		   || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
+			neg *= -1;
+	while (ft_isdigit(str[i]))
+	{
+		num = num * 10 + (str[i] - '0');
+		i++;
+	}
+	return (num * neg);
+}
+
+bool	digit_check(int argc, char **argv)
 {
 	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_atoi(argv[i]) < 0)
+		if (ft_atoll(argv[i]) < 0 || INT_MAX < ft_atoll(argv[i]) || INT_MAX_RANGE < ft_strlen(argv[i]))
 		{
-			printf(RED"Illegal value\n");
 			return (false);
 		}
 		i++;
@@ -56,9 +56,9 @@ bool	check(int argc, char **argv)
 
 void	print_help(void)
 {
-	printf(CYAN"Usage: [number of philosophers] ");
-	printf(CYAN"[time to die] [time to eat] [time to sleep] ");
-	printf(CYAN"[number of meals a philosopher has to eat]\n");
+	printf(CYAN"Usage: [number of philosophers]\n");
+	printf(CYAN"[time to die] [time to eat] [time to sleep] [number of meals a philosopher has to eat]\n");
+	printf(YELLOW"arguments must be zero to INT_MAX\n");
 }
 
 bool	ft_isnum(int size, char **s)

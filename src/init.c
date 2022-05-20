@@ -66,19 +66,19 @@ static bool	init_forks(t_data *data)
 
 bool	init_data(t_data *data, int argc, char **argv)
 {
-	if (ft_atoi(argv[1]) > 200)
+	if (ft_atoll(argv[1]) > 200)
 	{
 		printf(RED"too many philosophers \n");
 		return (false);
 	}
-	data->number_of_philo = ft_atoi(argv[1]);
-	data->time_to_die = ft_atoi(argv[2]);
-	data->time_to_eat = ft_atoi(argv[3]);
-	data->time_to_sleep = ft_atoi(argv[4]);
+	data->number_of_philo = ft_atoll(argv[1]);
+	data->time_to_die = ft_atoll(argv[2]);
+	data->time_to_eat = ft_atoll(argv[3]);
+	data->time_to_sleep = ft_atoll(argv[4]);
 	data->argc = argc;
 	data->is_finished = 0;
 	if (argc == 6)
-		data->number_of_min_eat = ft_atoi(argv[5]);
+		data->number_of_min_eat = ft_atoll(argv[5]);
 	else
 		data->number_of_min_eat = 0;
 	pthread_mutex_init(&(data->shared_mutex), NULL);

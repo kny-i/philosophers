@@ -18,6 +18,7 @@
 # define MAGENTA "\x1b[35m"
 # define CYAN "\x1b[36m"
 # define RESET "\x1b[0m"
+# define INT_MAX_RANGE 11
 
 typedef struct s_data t_data;
 
@@ -73,14 +74,14 @@ int		philo_think(t_philo *philo);
 int		philo_eat(t_philo *philo);
 int		time_keeper_philo(t_philo *philo, size_t time);
 //monitor.c
-void	*monitor_routine(void *ptr);
-void	terminate_program(t_data *data);
+void		*monitor_routine(void *ptr);
+void		terminate_program(t_data *data);
 //print_action.c
-size_t	get_time_philo(t_philo *philo);
-int		print_action(t_philo *philo, char *message);
+size_t		get_time_philo(t_philo *philo);
+int			print_action(t_philo *philo, char *message);
 //utils.c
-int		ft_atoi(const char *str);
-bool	check(int argc, char **argv);
+long long	ft_atoll(const char *str);
+bool	digit_check(int argc, char **argv);
 void	print_help(void);
 bool	ft_isnum(int size, char **s);
 
