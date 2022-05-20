@@ -13,11 +13,13 @@ size_t	get_time_philo(t_philo *philo)
 
 int	print_action(t_philo *philo, char *message)
 {
-	char *s[4];
+	char *s[5];
 	s[0] ="has taken a fork";
 	s[1] ="is sleeping";
 	s[2] ="is thinking";
 	s[3] ="is die";
+	s[4] ="is eating";
+
 	if (philo->data->is_finished == 1)
 		return (1);
 	pthread_mutex_lock(&(philo->data->shared_mutex));
@@ -29,6 +31,8 @@ int	print_action(t_philo *philo, char *message)
 		printf("\x1b[33m%8zu: \x1b[37m%zu \x1b[32m%s\n",get_time_philo(philo), philo->philo_number, message);
 	if (message == s[3])
 		printf("\x1b[33m%8zu: \x1b[37m%zu \x1b[31m%s\n",get_time_philo(philo), philo->philo_number, message);
+	if (message == s[4])
+		printf("\x1b[33m%8zu: \x1b[37m%zu \x1b[34m%s\n",get_time_philo(philo), philo->philo_number, message);
 	pthread_mutex_unlock(&(philo->data->shared_mutex));
 	return (0);
 }
