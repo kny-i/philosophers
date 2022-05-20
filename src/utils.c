@@ -45,6 +45,8 @@ bool	digit_check(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		if (ft_strlen(argv[i]) > 1 && argv[i][0] == '0')
+			return(false);
 		if (ft_atoll(argv[i]) < 0 || INT_MAX < ft_atoll(argv[i]) || INT_MAX_RANGE < ft_strlen(argv[i]))
 		{
 			return (false);
