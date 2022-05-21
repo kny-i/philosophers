@@ -6,7 +6,9 @@ void	*monitor_routine(void *ptr)
 	int			i;
 
 	monitor = (t_monitor *)ptr;
-	printf("monitor[%d] -> [%p]\n", monitor->philo->philo_number,  monitor);
+	pthread_mutex_lock(&monitor->data->shared_mutex);
+	printf(RESET"monitor[%d] -> [%p]\n", monitor->philo->philo_number,  monitor);
+	pthread_mutex_unlock(&monitor->data->shared_mutex);
 	i = 0;
 	time_keeper_philo(monitor->philo, monitor->data->time_to_die);
 	while (monitor->data->is_finished != 1)
