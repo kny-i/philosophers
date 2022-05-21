@@ -1,8 +1,8 @@
 NAME = philo
 
-SRCS = $(shell find "./src/" -name "*.c")
+SRCS_FILES = fork.c init.c main.c monitor.c philo_action.c print_action.c thread.c time.c utils.c
+SRCS = $(addprefix ./src/, $(SRCS_FILES))
 OBJS = ${SRCS:.c=.o}
-#FLAG = -fsanitize=thread -g
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -pthread
 
