@@ -76,7 +76,6 @@ bool	init_data(t_data *data, int argc, char **argv)
 	while (i < data->number_of_philo)
 	{
 		printf("forx_mutex[%d] -> [%p]\n", i , &data->forks_mutex[i]);
-		printf("monitor[%d] -> [%p]\n", i , &data->monitors[i].thread_monitor);
 		i++;
 	}
 	return (true);
