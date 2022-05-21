@@ -15,18 +15,17 @@ int 	philo_eat(t_philo *philo)
 		{
 			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number - 1]));
 			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number]));
-			philo->has_fork_left = 0;
-			philo->has_fork_right = 0;
-			philo->eat_count++;
 		}
 		else
 		{
 			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number - 1]));
 			pthread_mutex_unlock(&(philo->data->forks_mutex[0]));
-			philo->has_fork_left = 0;
-			philo->has_fork_right = 0;
-			philo->eat_count++;
 		}
+		pthread_mutex_lock(&philo->data->shared_mutex);
+		philo->has_fork_left = 0;
+		philo->has_fork_right = 0;
+		philo->eat_count++;
+		pthread_mutex_unlock(&philo->data->shared_mutex);
 	}
 	return (0);
 }
