@@ -1,6 +1,15 @@
 #include "../include/philo.h"
 
-int 	philo_eat(t_philo *philo)
+static void	philo_eat_fin(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->shared_mutex);
+	philo->has_fork_left = 0;
+	philo->has_fork_right = 0;
+	philo->eat_count++;
+	pthread_mutex_unlock(&philo->data->shared_mutex);
+}
+
+int	philo_eat(t_philo *philo)
 {
 	if (philo->data->is_finished == 1)
 		return (1);
@@ -13,24 +22,23 @@ int 	philo_eat(t_philo *philo)
 			return (1);
 		if (philo->philo_number != philo->data->number_of_philo)
 		{
-			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number - 1]));
-			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number]));
+			pthread_mutex_unlock \
+			(&(philo->data->forks_mutex[philo->philo_number - 1]));
+			pthread_mutex_unlock \
+			(&(philo->data->forks_mutex[philo->philo_number]));
 		}
 		else
 		{
-			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number - 1]));
+			pthread_mutex_unlock \
+			(&(philo->data->forks_mutex[philo->philo_number - 1]));
 			pthread_mutex_unlock(&(philo->data->forks_mutex[0]));
 		}
-		pthread_mutex_lock(&philo->data->shared_mutex);
-		philo->has_fork_left = 0;
-		philo->has_fork_right = 0;
-		philo->eat_count++;
-		pthread_mutex_unlock(&philo->data->shared_mutex);
+		philo_eat_fin(philo);
 	}
 	return (0);
 }
 
-int 	philo_sleep(t_philo *philo)
+int	philo_sleep(t_philo *philo)
 {
 	if (philo->data->is_finished == 1)
 		return (1);
@@ -40,11 +48,12 @@ int 	philo_sleep(t_philo *philo)
 		return (1);
 	return (0);
 }
-int 	philo_think(t_philo *philo)
+
+int	philo_think(t_philo *philo)
 {
 	if (philo->data->is_finished == 1)
 		return (1);
-	if (print_action(philo,"is thinking") == 1)
+	if (print_action(philo, "is thinking") == 1)
 		return (1);
 	return (0);
 }

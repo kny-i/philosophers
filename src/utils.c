@@ -2,7 +2,7 @@
 
 size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -46,19 +46,13 @@ bool	digit_check(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_strlen(argv[i]) > 1 && argv[i][0] == '0')
-			return(false);
-		if (ft_atoll(argv[i]) < 0 || INT_MAX < ft_atoll(argv[i]) || INT_MAX_RANGE < ft_strlen(argv[i]))
+			return (false);
+		if (ft_atoll(argv[i]) < 0 || INT_MAX < ft_atoll(argv[i]) \
+			|| INT_MAX_RANGE < ft_strlen(argv[i]))
 			return (false);
 		i++;
 	}
 	return (true);
-}
-
-void	print_help(void)
-{
-	printf(CYAN"Usage: [number of philosophers]\n");
-	printf(CYAN"[time to die] [time to eat] [time to sleep] [number of meals a philosopher has to eat]\n");
-	printf(YELLOW"arguments must be zero to INT_MAX\n");
 }
 
 bool	ft_isnum(int size, char **s)
