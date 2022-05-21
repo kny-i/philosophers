@@ -22,15 +22,10 @@ void	*philo_routine(void *ptr)
 {
 
 	t_philo *philo;
-	struct timeval	tv;
-	size_t			time;
-	int				ret;
 
 	philo = (t_philo *)ptr;
-	if ((philo->philo_number + 1) % 2 == 1)
+	if ((philo->philo_number % 2) == 0)
 		usleep(200);
-	ret = gettimeofday(&tv, NULL);
-	philo->start_time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	while(philo->data->is_finished != 1)
 	{
 		if ( pickup_fork(philo) == 1 || philo_eat(philo) == 1 || \
@@ -40,7 +35,7 @@ void	*philo_routine(void *ptr)
 	//fork離す関数必要。
 	put_down_fork(philo);
 //	printf("\x1b[36m[%s philo_num = %zu]\n\033[m", "routine fin", philo->philo_number);
-	return (NULL);;
+	return (NULL);
 }
 
 void	create_thread(t_data *data)
@@ -48,6 +43,7 @@ void	create_thread(t_data *data)
 	int	i;
 
 	i = 0;
+	data->start_time = get_time(data->philos);
 	while (i < data->number_of_philo)
 	{
 		pthread_create(&(data->philos[i].thread_philo), NULL, &philo_routine, &data->philos[i]);
@@ -58,7 +54,7 @@ void	create_thread(t_data *data)
 
 void	join_thread(t_data *data)
 {
-	size_t i;
+	int	i;
 
 	i = 0;
 	while (i < data->number_of_philo)

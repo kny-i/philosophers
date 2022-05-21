@@ -2,7 +2,7 @@
 
 static bool	init_philos(t_data *data)
 {
-	size_t	i;
+	int 	i;
 
 	i = 0;
 	while (i < data->number_of_philo)
@@ -19,7 +19,7 @@ static bool	init_philos(t_data *data)
 
 static bool	init_monitors(t_data *data)
 {
-	size_t	i;
+	int		i;
 
 	i = 0;
 	while (i < data->number_of_philo)
@@ -35,7 +35,7 @@ static bool	init_monitors(t_data *data)
 
 static bool	init_forks(t_data *data)
 {
-	size_t	i;
+	int 	i;
 
 	i = 0;
 	while (i < data->number_of_philo)

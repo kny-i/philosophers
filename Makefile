@@ -4,15 +4,14 @@ SRCS = $(shell find "./src/" -name "*.c")
 OBJS = ${SRCS:.c=.o}
 #FLAG = -fsanitize=thread -g
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -pthread
 
 RM = rm -rf
 
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${CC} ${FLAGS} ${OBJS} $(FLAG) -o ${NAME}
-	#${CC} ${FLAGS} ${OBJS} $(FLAG) -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS} $(FLAG) -o ${NAME}
 
 clean:
 	${RM} ${OBJS}
