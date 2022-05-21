@@ -64,6 +64,7 @@ bool	init_data(t_data *data, int argc, char **argv)
 	else
 		data->number_of_min_eat = 0;
 	pthread_mutex_init(&(data->shared_mutex), NULL);
+	printf("[%p]\n", &data->shared_mutex);
 	if(!init_philos(data) || !init_forks(data) || !init_monitors(data))
 	{
 		printf(RED"malloc error\n");
