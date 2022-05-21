@@ -10,7 +10,7 @@ static void	monitor_rotine_2(t_monitor *monitor)
 		if (get_time_philo(monitor->philo) - monitor->philo->last_eat_time \
 						> monitor->data->time_to_die)
 		{
-			print_action(monitor->philo, "is dead");
+			print_action(monitor->philo, "died");
 			terminate_program(monitor->data);
 		}
 		if (monitor->philo->eat_count >= monitor->data->number_of_min_eat)
