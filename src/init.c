@@ -50,7 +50,7 @@ bool	init_data(t_data *data, int argc, char **argv)
 {
 	if (ft_atoll(argv[1]) > 200)
 	{
-		printf(RED"too many philosophers \n");
+		printf("too many philosophers \n");
 		return (false);
 	}
 	data->number_of_philo = (int)ft_atoll(argv[1]);

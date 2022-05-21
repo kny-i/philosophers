@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	if ((argc != 5 && argc != 6) || \
 		ft_isnum(argc - 1, argv) == false || digit_check(argc, argv) == false)
 	{
-		printf(RED"Invalid input!\n");
+		printf("Invalid input!\n");
 		print_help();
 		return (0);
 	}
