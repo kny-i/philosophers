@@ -1,4 +1,4 @@
-#include "../include/philo.h"
+ #include "../include/philo.h"
 
 void	*monitor_routine(void *ptr)
 {
