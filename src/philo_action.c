@@ -13,10 +13,8 @@ int 	philo_eat(t_philo *philo)
 			return (1);
 		if (philo->philo_number != philo->data->number_of_philo)
 		{
-			pthread_mutex_lock(&philo->data->shared_mutex);
 			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number - 1]));
 			pthread_mutex_unlock(&(philo->data->forks_mutex[philo->philo_number]));
-			pthread_mutex_unlock(&philo->data->shared_mutex);
 		}
 		else
 		{

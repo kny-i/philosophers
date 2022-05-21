@@ -69,14 +69,14 @@ bool	init_data(t_data *data, int argc, char **argv)
 		printf(RED"malloc error\n");
 		return (false);
 	}
-	int i;
+//	int i;
 
-	i = 0;
-	printf("shared_mutex -> [%p]\n", &data->shared_mutex);
-	while (i < data->number_of_philo)
-	{
-		printf("forx_mutex[%d] -> [%p]\n", i , &data->forks_mutex[i]);
-		i++;
-	}
+//	i = 0;
+//	printf("shared_mutex -> [%p]\n", &data->shared_mutex);
+//	while (i < data->number_of_philo)
+//	{
+//		printf("forx_mutex[%d] -> [%p]\n", i , &data->forks_mutex[i]);
+//		i++;
+//	}
 	return (true);
 }
