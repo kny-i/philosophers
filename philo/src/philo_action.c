@@ -63,6 +63,7 @@ void	*philo_routine(void *ptr)
 	t_philo	*philo;
 
 	philo = (t_philo *)ptr;
+	printf("\x1b[36m[is_finished =  %p]\n\033[m", &philo->data->is_finished);
 	if ((philo->philo_number % 2) == 0)
 		usleep(200);
 	while (philo->data->is_finished != 1)

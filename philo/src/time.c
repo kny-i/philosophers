@@ -31,8 +31,14 @@ int	time_keeper_philo(t_philo *philo, size_t time)
 		passed_time = get_time_philo(philo);
 		if (passed_time - start_time >= time)
 			return (0);
+		pthread_mutex_lock(&philo->data->shared_mutex);
 		if (philo->data->is_finished == 1)
+		{
+			pthread_mutex_unlock(&philo->data->shared_mutex);
 			return (1);
+		}
+		else
+			pthread_mutex_unlock(&philo->data->shared_mutex);
 		usleep(100);
 	}
 }
