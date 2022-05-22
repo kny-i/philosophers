@@ -1,6 +1,6 @@
 #include "../include/philo.h"
 
-static void	monitor_rotine_2(t_monitor *monitor)
+static void	monitor_action(t_monitor *monitor)
 {
 	int	i;
 
@@ -32,6 +32,6 @@ void	*monitor_routine(void *ptr)
 
 	monitor = (t_monitor *)ptr;
 	time_keeper_philo(monitor->philo, monitor->data->time_to_die);
-	monitor_rotine_2(monitor);
+	monitor_action(monitor);
 	return (NULL);
 }
