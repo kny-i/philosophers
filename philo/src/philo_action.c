@@ -2,11 +2,11 @@
 
 static void	philo_eat_fin(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->data->shared_mutex);
+//	pthread_mutex_lock(&philo->data->shared_mutex);
 	philo->has_fork_left = 0;
 	philo->has_fork_right = 0;
 	philo->eat_count++;
-	pthread_mutex_unlock(&philo->data->shared_mutex);
+//	pthread_mutex_unlock(&philo->data->shared_mutex);
 }
 
 int	philo_eat(t_philo *philo)
