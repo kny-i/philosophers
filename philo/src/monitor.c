@@ -21,6 +21,8 @@ static void	monitor_action(t_monitor *monitor)
 			pthread_mutex_unlock(&monitor->data->shared_mutex);
 			monitor->is_reached_min_eat = 1;
 		}
+		else
+			pthread_mutex_unlock(&monitor->data->shared_mutex);
 		while (i < monitor->data->number_of_philo && monitor->data->argc == 6)
 		{
 			if (monitor->data->monitors[i].is_reached_min_eat == 0)
