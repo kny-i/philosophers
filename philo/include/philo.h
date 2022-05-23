@@ -66,8 +66,10 @@ void		put_down_fork(t_philo *philo);
 //philo_action.c
 int			philo_sleep(t_philo *philo);
 int			philo_think(t_philo *philo);
-int			philo_eat(t_philo *philo);
 void		*philo_routine(void *ptr);
+
+//eat.c
+int			philo_eat(t_philo *philo);
 
 //time.c
 int			time_keeper_philo(t_philo *philo, size_t time);
