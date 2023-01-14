@@ -1,2 +1,2 @@
-# philo_with_Ohnuki
+# philosophers
 42project
